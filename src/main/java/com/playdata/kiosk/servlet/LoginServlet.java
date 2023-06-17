@@ -1,6 +1,7 @@
 package com.playdata.kiosk.servlet;
 
 import com.playdata.kiosk.dao.UserDao;
+import com.playdata.kiosk.domain.Role;
 import com.playdata.kiosk.domain.User;
 import com.playdata.kiosk.dto.LoginDto;
 
@@ -34,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("name", user.getName());
             session.setAttribute("role", user.getRole());
 
-            if(user.getRole().equals("admin")){
+            if(user.getRole() == Role.ADMIN){
                 resp.sendRedirect("order");
             } else {
                 resp.sendRedirect("admin");

@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-container input {
+    margin-bottom: 20px;
+    height: 50px;
+    width: 30%;
+}
+.notice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.notice-container img {
+    width: 50%;
+    height: 50%;
+}
+.notice-container p {
+}
