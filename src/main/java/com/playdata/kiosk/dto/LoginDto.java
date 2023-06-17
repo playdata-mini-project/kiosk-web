@@ -1,10 +1,10 @@
 package com.playdata.kiosk.dto;
 
-public class UserLoginDto {
+public class LoginDto {
     private String name;
     private String password;
 
-    public UserLoginDto(String name, String password) {
+    public LoginDto(String name, String password) {
         this.name = name;
         this.password = password;
     }
