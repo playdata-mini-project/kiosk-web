@@ -1,11 +1,14 @@
 package com.playdata.kiosk.servlet;
 
-import com.playdata.kiosk.dto.UserLoginDto;
+import com.playdata.kiosk.dao.UserDao;
+import com.playdata.kiosk.domain.User;
+import com.playdata.kiosk.dto.LoginDto;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
@@ -20,6 +23,23 @@ public class LoginServlet extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
 
-        UserLoginDto userLoginDto = new UserLoginDto(name, password);
+        LoginDto loginDto = new LoginDto(name, password);
+        User user = new UserDao().login(loginDto);
+
+        if(user == null){
+            resp.sendRedirect("/login");
+        } else {
+            HttpSession session = req.getSession();
+            session.setAttribute("id", user.getId());
+            session.setAttribute("name", user.getName());
+            session.setAttribute("role", user.getRole());
+
+            if(user.getRole().equals("admin")){
+                resp.sendRedirect("order");
+            } else {
+                resp.sendRedirect("admin");
+            }
+        }
+
     }
 }
