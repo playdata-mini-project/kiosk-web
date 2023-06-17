@@ -5,7 +5,7 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    private String role;
+    private Role role;
 
     public Long getId() {
         return id;
@@ -19,11 +19,11 @@ public class User {
         return password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public static User createLoginUser(Long id, String name, String role){
+    public static User createLoginUser(Long id, String name, Role role){
         User user = new User();
         user.id = id;
         user.name = name;

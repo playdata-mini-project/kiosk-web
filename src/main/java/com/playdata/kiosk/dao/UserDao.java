@@ -1,6 +1,7 @@
 package com.playdata.kiosk.dao;
 
 import com.playdata.kiosk.config.JdbcConnection;
+import com.playdata.kiosk.domain.Role;
 import com.playdata.kiosk.domain.User;
 import com.playdata.kiosk.dto.LoginDto;
 
@@ -29,7 +30,7 @@ public class UserDao {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 String role = resultSet.getString("role");
-                return User.createLoginUser(id, name, role);
+                return User.createLoginUser(id, name, Role.valueOf(role));
             } else {
                 return null;
             }
