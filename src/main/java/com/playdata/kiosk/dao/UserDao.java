@@ -15,7 +15,7 @@ public class UserDao {
     public User login(LoginDto dto){
         Connection conn = new JdbcConnection().getJdbc();
 
-        String sql = "select id, name, role " +
+        String sql = "select id, name, email, role " +
                 "from users " +
                 "where name = ? and password = ?";
 
@@ -29,8 +29,9 @@ public class UserDao {
             if(resultSet.next()){
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
                 String role = resultSet.getString("role");
-                return User.createLoginUser(id, name, Role.valueOf(role));
+                return User.createLoginUser(id, name, email, Role.valueOf(role));
             } else {
                 return null;
             }
