@@ -6,7 +6,7 @@ public class CoffeeMachine extends Thread{
 
     //커피를 뱉을 거임
     public void make(String product){
-        OrderQueue.addOrder(product);
+        OrderBoard.addOrder(product);
         try {
             Thread.sleep(SECOND); //product.getMakeTime(); 이랑 곱할거임
             //order.bePrepared();
