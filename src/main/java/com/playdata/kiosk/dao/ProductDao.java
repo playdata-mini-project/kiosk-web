@@ -1,7 +1,9 @@
 package com.playdata.kiosk.dao;
 
+import com.playdata.kiosk.dto.ProductDetailDto;
 import com.playdata.kiosk.dto.ProductDto;
 import com.playdata.kiosk.config.JdbcConnection;
+import com.playdata.kiosk.dto.ProductListDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,5 +61,64 @@ public class ProductDao {
         return productDtos;
     }
 
+    public List<ProductListDto> productList(int category) {
+
+        Connection conn = new  JdbcConnection().getJdbc();
+        ArrayList<ProductListDto> productList = new ArrayList<>();
+
+        String sql = "select id,name,price,image,quantity from product " +
+                "where category_id = ? or 0 = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst = conn.prepareStatement(sql);
+
+            pst.setInt(1, category);
+            pst.setInt(2, category);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                ProductListDto product = new ProductListDto(
+                        rs.getLong(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5)
+                );
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return productList;
+    }
+
+    public ProductDetailDto productDetail(Long id) {
+        Connection conn = new  JdbcConnection().getJdbc();
+        String sql = "select id,name,price,image,quantity from product " +
+                "where id = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst = conn.prepareStatement(sql);
+
+            pst.setLong(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            ProductDetailDto product = new ProductDetailDto();
+            while (rs.next()) {
+                product = new ProductDetailDto(
+                        rs.getLong(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5)
+                );
+            }
+            return product;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
 
