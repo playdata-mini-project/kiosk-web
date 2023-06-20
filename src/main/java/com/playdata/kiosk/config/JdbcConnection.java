@@ -12,10 +12,14 @@ public class JdbcConnection {
 
     public Connection getJdbc()  {
         Connection conn;
+
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager
                     .getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return conn;
