@@ -30,7 +30,7 @@ public class ProductServlet extends HttpServlet {
         ProductDao productDao = new ProductDao();
         List<ProductListDto> productList = productDao.productList(category);
         req.setAttribute("productList",productList);
-        req.getRequestDispatcher("views/productlist.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/product.jsp").forward(req, resp);
         System.out.println(
                 "post 실행됨!!"
         );
