@@ -18,6 +18,8 @@
         <td><c:out value="${product.quantity}"/></td>
         <td><c:out value="${product.price}"/></td>
         <td><c:out value="${product.makeTime}"/></td>
+        <td><input type="text"></td>
+        <td><input type="submit" value="추가"></td>
     </tr>
 </c:forEach>
 </table>
