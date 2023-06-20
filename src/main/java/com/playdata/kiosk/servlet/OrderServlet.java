@@ -28,10 +28,9 @@ public class OrderServlet extends HttpServlet {
             Long productId = cartList.get(i).getId();
             int quantity = cartList.get(i).getQuantity();
             orderDao.order(productId,quantity);
-
             orderDao.orderDetailSave(orderHistoryId,productId,quantity);
         }
-//        req.getRequestDispatcher("views/product.jsp").forward(req, resp);
+        session.removeAttribute("cartList");
         resp.sendRedirect("/product");
 
     }
