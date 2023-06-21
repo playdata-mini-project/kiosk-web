@@ -16,14 +16,14 @@ public class UserDao {
     public void join(JoinDto dto) {
         Connection conn = new JdbcConnection().getJdbc();
 
-        String sql = "insert into users(name, password, email, role) " +
+        String sql = "insert into users(name, password, mail, role) " +
                 "values(?, ?, ?, ?)";
 
         try{
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, dto.getName());
             pst.setString(2, dto.getPassword());
-            pst.setString(3, dto.getEmail());
+            pst.setString(3, dto.getMail());
             pst.setString(4, dto.getRole().toString());
 
             pst.executeUpdate();
@@ -35,7 +35,7 @@ public class UserDao {
     public User login(LoginDto dto){
         Connection conn = new JdbcConnection().getJdbc();
 
-        String sql = "select id, name, email, role " +
+        String sql = "select id, name, mail, role " +
                 "from users " +
                 "where name = ? and password = ?";
 
@@ -49,9 +49,9 @@ public class UserDao {
             if(resultSet.next()){
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
-                String email = resultSet.getString("email");
+                String mail = resultSet.getString("mail");
                 String role = resultSet.getString("role");
-                return User.createLoginUser(id, name, email, Role.valueOf(role));
+                return User.createLoginUser(id, name, mail, Role.valueOf(role));
             } else {
                 return null;
             }

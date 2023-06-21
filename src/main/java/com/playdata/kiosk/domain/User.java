@@ -5,7 +5,7 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    private String email;
+    private String mail;
     private Role role;
 
     public Long getId() {
@@ -19,8 +19,8 @@ public class User {
     public String getPassword() {
         return password;
     }
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
     public Role getRole() {
@@ -31,7 +31,7 @@ public class User {
         User user = new User();
         user.id = id;
         user.name = name;
-        user.email = email;
+        user.mail = email;
         user.role = role;
         return user;
     }

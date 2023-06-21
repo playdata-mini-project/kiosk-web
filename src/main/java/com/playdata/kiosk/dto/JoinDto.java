@@ -6,13 +6,13 @@ public class JoinDto {
 
     private String name;
     private String password;
-    private String email;
+    private String mail;
     private Role role = Role.CUSTOMER;
 
-    public JoinDto(String name, String password, String email) {
+    public JoinDto(String name, String password, String mail) {
         this.name = name;
         this.password = password;
-        this.email = email;
+        this.mail = mail;
     }
 
     public String getName() {
@@ -23,8 +23,8 @@ public class JoinDto {
         return password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
     public Role getRole() {
