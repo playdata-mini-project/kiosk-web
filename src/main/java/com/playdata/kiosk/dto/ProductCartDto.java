@@ -7,6 +7,12 @@ public class ProductCartDto {
     private int price;
     private int priceTotal;
 
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
     public int getPriceTotal() {
         return priceTotal;
     }
@@ -30,11 +36,12 @@ public class ProductCartDto {
         this.quantity = quantity;
     }
 
-    public ProductCartDto(Long id, String name, int quantity, int price, int priceTotal) {
+    public ProductCartDto(Long id, String name, int quantity, int price, int priceTotal, String image) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
         this.priceTotal = priceTotal;
+        this.image = image;
     }
 }
