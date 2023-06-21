@@ -29,12 +29,12 @@
             </tr>
         <c:forEach var="orderHistory" items = "${orderHistoryList}">
             <tr>
-              <td><span>${orderHistory.uname}</span></td>
-              <td><span>${orderHistory.cname}</span></td>
-              <td><span>${orderHistory.pname}</span></td>
-              <td><span>${orderHistory.amount}</span></td>
-              <td><span>${orderHistory.price}</span></td>
-              <td><span>${orderHistory.orderedAt}</span></td>
+              <td style="text-align: center"><span>${orderHistory.uname}</span></td>
+              <td style="text-align: center"><span>${orderHistory.cname}</span></td>
+              <td style="text-align: center"><span>${orderHistory.pname}</span></td>
+              <td style="text-align: center"><span>${orderHistory.amount}</span></td>
+              <td style="text-align: center"><span>${orderHistory.price}</span></td>
+              <td style="text-align: center"><span>${orderHistory.orderedAt}</span></td>
             </tr>
         </c:forEach>
     </tbody>
