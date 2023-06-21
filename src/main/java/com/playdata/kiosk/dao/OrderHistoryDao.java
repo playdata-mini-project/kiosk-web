@@ -15,7 +15,7 @@ public class OrderHistoryDao {
     public List<OrderHistoryDto> findAll() {
         List<OrderHistoryDto> orderHistoryDtos = new ArrayList<OrderHistoryDto>();
         Connection conn = new JdbcConnection().getJdbc();
-        String sql = "select u.NAME, c.NAME, p.NAME, od.AMOUNT, p.PRICE, o.ORDERED_AT\n" +
+        String sql = "select u.NAME u_name, c.NAME c_name, p.NAME p_name, od.AMOUNT, p.PRICE, o.ORDERED_AT\n" +
                 "from USERS u, ORDER_HISTORY o, ORDER_HISTORY_DETAIL od, PRODUCT p, CATEGORY c\n" +
                 "where u.ID = o.USER_ID and o.ID = od.ORDER_HISTORY_ID and od.PRODUCT_ID = p.ID\n" +
                 "and p.CATEGORY_ID = c.ID;";
@@ -25,12 +25,12 @@ public class OrderHistoryDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 orderHistoryDtos.add(
-                        new OrderHistoryDto(resultSet.getString("uname"),
-                                resultSet.getString("cname"),
-                                resultSet.getString("pname"),
+                        new OrderHistoryDto(resultSet.getString("u_name"),
+                                resultSet.getString("c_name"),
+                                resultSet.getString("p_name"),
                                 resultSet.getInt("amount"),
                                 resultSet.getInt("price"),
-                                resultSet.getDate("orderdeAt")
+                                resultSet.getDate("ordered_at")
                                 ));
             }
         } catch (SQLException e) {
