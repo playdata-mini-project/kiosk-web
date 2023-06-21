@@ -1,13 +1,24 @@
 package com.playdata.kiosk.dto;
 
 public class ProductDto {
-    private  int id;
+    private int id;
     private String name;
     private int categoryId;
     private int quantity;
     private int price;
     private int makeTime;
     private int addQuantity;
+    private String imgUrl;
+
+    public ProductDto(int id, String name, int categoryId, int quantity, int price, int makeTime, int addQuantity) {
+        this.id = id;
+        this.name = name;
+        this.categoryId = categoryId;
+        this.quantity = quantity;
+        this.price = price;
+        this.makeTime = makeTime;
+        this.addQuantity = addQuantity;
+    }
 
     public ProductDto(int id, String name, int categoryId, int quantity, int price, int makeTime) {
         this.id = id;
@@ -19,12 +30,13 @@ public class ProductDto {
 
     }
 
-    public ProductDto(String name, int categoryId, int quantity, int price , int makeTime) {
+    public ProductDto(String name, int categoryId, int quantity, int price, int makeTime,String imgUrl) {
         this.name = name;
         this.categoryId = categoryId;
         this.quantity = quantity;
         this.price = price;
         this.makeTime = makeTime;
+        this.imgUrl = imgUrl;
     }
 
     public ProductDto(int id, int quantity, int addQuantity) {
@@ -35,6 +47,7 @@ public class ProductDto {
 
     public int getId() {
         return id;
+
     }
 
     public void setId(int id) {
@@ -87,5 +100,13 @@ public class ProductDto {
 
     public void setAddQuantity(int addQuantity) {
         this.addQuantity = addQuantity;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

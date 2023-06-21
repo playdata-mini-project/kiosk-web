@@ -11,10 +11,11 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="/css/addproduct.css">
+
+
 <table>
 <c:forEach var="product" items = "${productlist}">
     <form action="/addProductUpdate" method="post" accept-charset="UTF-8">
-
              <tr>
                 <td><input name="id" value="${product.id}" type="hidden"/>
                     <span name="id">${product.id}</span>
