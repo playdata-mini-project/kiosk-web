@@ -8,7 +8,7 @@ public class JdbcConnection {
     private final String url = "jdbc:mysql://localhost:3306/kiosk" +
             "?serverTimezone=Asia/Seoul&characterEncoding=UTF-8";
     private final String username = "root";
-    private final String password = "1q2w3e4r!!";
+    private final String password = "admin";
 
     public Connection getJdbc()  {
         Connection conn;
@@ -20,8 +20,6 @@ public class JdbcConnection {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return conn;
