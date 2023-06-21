@@ -16,6 +16,26 @@ public class Orders {
         this.userName = userName;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getMakeTime() {
+        return makeTime;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public Completion getCompletion() {
+        return completion;
+    }
+
     public void bePrepared(){
         completion = Completion.INCOMPLETE;
     }
