@@ -66,7 +66,7 @@ public class ProductDao {
         Connection conn = new  JdbcConnection().getJdbc();
         ArrayList<ProductListDto> productList = new ArrayList<>();
 
-        String sql = "select id,name,price,image,quantity from product " +
+        String sql = "select id,name,price,img_url,quantity from product " +
                 "where category_id = ? or 0 = ?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -95,7 +95,7 @@ public class ProductDao {
 
     public ProductDetailDto productDetail(Long id) {
         Connection conn = new  JdbcConnection().getJdbc();
-        String sql = "select id,name,price,image,quantity from product " +
+        String sql = "select id,name,price,img_url,quantity from product " +
                 "where id = ?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

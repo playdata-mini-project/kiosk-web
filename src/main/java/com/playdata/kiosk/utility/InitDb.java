@@ -60,12 +60,12 @@ public class InitDb {
         queryList.add(createCategoryQuery("스무디"));
 
 
-        queryList.add(createProductQuery("아메리카노", 20, 1, 1500, 100, "/img/coffee.png"));
-        queryList.add(createProductQuery("라떼", 30, 1, 2000, 100, "/img/coffee.png"));
-        queryList.add(createProductQuery("히비스커스", 20, 2, 3000, 100, "/img/tea.png"));
-        queryList.add(createProductQuery("캐모마일", 30, 2, 3500, 100, "/img/tea.png"));
-        queryList.add(createProductQuery("딸기딜라이트블렌디드요거트", 80, 3, 4500, 100, "/img/smoothie.png"));
-        queryList.add(createProductQuery("블루베리스무디", 60, 3, 5500, 100, "/img/smoothie.png"));
+        queryList.add(createProductQuery("아메리카노", 20, 1, 1500, 100, "https://www.mmthcoffee.com/files/menu/abb8d3886846e2ac168f8433390f1a8b.png"));
+        queryList.add(createProductQuery("꿀라떼", 30, 1, 2000, 100, "https://www.mmthcoffee.com/files/menu/5c3aa520d5611683eda068700afc4b94.png"));
+        queryList.add(createProductQuery("밀크티", 20, 2, 3000, 100, "https://www.mmthcoffee.com/files/menu/d101c2f9a1589fd4f228c689d37f94a0.png"));
+        queryList.add(createProductQuery("캐모마일티", 30, 2, 3500, 100, "https://www.mmthcoffee.com/files/menu/5db721802768bfa14fc4ef7c590c91fc.png"));
+        queryList.add(createProductQuery("딸기 요거트 스무디", 80, 3, 4500, 100, "https://www.mmthcoffee.com/files/menu/d2d25ee1074aced4b5b3be0b4e851d25.png"));
+        queryList.add(createProductQuery("블루베리 요거트 스무디", 60, 3, 5500, 100, "https://www.mmthcoffee.com/files/menu/3a3e0405ca37731e94f9e90423784df3.png"));
     }
     private final String DROP_DATABASE = "DROP DATABASE KIOSK";
     private final String CREATE_DATABASE = "CREATE DATABASE KIOSK";
