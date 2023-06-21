@@ -39,6 +39,7 @@ public class OrderBoardService {
                 incompletes.add(order);
             }
         }
+        //0 완성... 1 미완성...
         return new List[]{completes, incompletes};
     }
     private Orders makeCoffee(String productName, int makeTime, int amount, String userName){
