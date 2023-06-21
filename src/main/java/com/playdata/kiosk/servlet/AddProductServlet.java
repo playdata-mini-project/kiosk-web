@@ -24,7 +24,8 @@ public class AddProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(req.getParameter("quantity"));
         int price = Integer.parseInt(req.getParameter("price"));
         int makeTime = Integer.parseInt(req.getParameter("makeTime"));
-        ProductDto productDto = new ProductDto(name, categoryId, quantity, price, makeTime);
+        String imgUrl = req.getParameter("imgUrl");
+        ProductDto productDto = new ProductDto(name, categoryId, quantity, price, makeTime, imgUrl);
         ProductDao productDao = new ProductDao();
         productDao.insert(productDto);
 

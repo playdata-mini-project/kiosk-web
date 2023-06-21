@@ -16,21 +16,16 @@ import java.util.List;
 public class ProductDao {
     public void insert(ProductDto product) {
         Connection conn = new  JdbcConnection().getJdbc();
-        String sql = "insert into product(name, category_id, quantity, price, make_time) " +
-                "values(?, ?, ?, ?, ?)";
-
-        System.out.println(product.getName());
-        System.out.println(product.getCategoryId());
-        System.out.println(product.getQuantity());
-        System.out.println(product.getPrice());
+        String sql = "insert into product(name, category_id, quantity, price, make_time, img_url) " +
+                "values(?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-//            pst.setInt(1, product.getId());
             pst.setString(1, product.getName());
             pst.setInt(2, product.getCategoryId());
             pst.setInt(3, product.getQuantity());
             pst.setInt(4, product.getPrice());
             pst.setInt(5, product.getMakeTime());
+            pst.setString(6, product.getImgUrl());
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
