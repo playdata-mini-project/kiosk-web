@@ -1,16 +1,17 @@
 package com.playdata.kiosk.dto;
 
 public class ProductDto {
-    private  int Id;
-    private String Name;
+    private  int id;
+    private String name;
     private int categoryId;
     private int quantity;
     private int price;
     private int makeTime;
+    private int addQuantity;
 
     public ProductDto(int id, String name, int categoryId, int quantity, int price, int makeTime) {
-        Id = id;
-        Name = name;
+        this.id = id;
+        this.name = name;
         this.categoryId = categoryId;
         this.quantity = quantity;
         this.price = price;
@@ -19,27 +20,33 @@ public class ProductDto {
     }
 
     public ProductDto(String name, int categoryId, int quantity, int price , int makeTime) {
-        Name = name;
+        this.name = name;
         this.categoryId = categoryId;
         this.quantity = quantity;
         this.price = price;
         this.makeTime = makeTime;
     }
 
+    public ProductDto(int id, int quantity, int addQuantity) {
+        this.id = id;
+        this.quantity = quantity;
+        this.addQuantity = addQuantity;
+    }
+
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getCategoryId() {
@@ -72,5 +79,13 @@ public class ProductDto {
 
     public void setMakeTime(int makeTime) {
         this.makeTime = makeTime;
+    }
+
+    public int getAddQuantity() {
+        return addQuantity;
+    }
+
+    public void setAddQuantity(int addQuantity) {
+        this.addQuantity = addQuantity;
     }
 }
