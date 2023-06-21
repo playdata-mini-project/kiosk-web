@@ -40,7 +40,9 @@
 </div>
     <div class="cart_buttons">
         <button class="cart_button left"><a href = "/product" class="cart_button a">주문추가</a></button>
-        <button class="cart_button right"><a href = "/order" class="cart_button a">주문하기</a></button>
+            <c:if test = "${cartList ne null}">
+                <button class="cart_button right"><a href = "/order" class="cart_button a">주문하기</a></button>
+            </c:if>
     </div>
 </body>
 </html>

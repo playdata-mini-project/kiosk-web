@@ -27,8 +27,16 @@
         <article id="tab" class="content-container__content target">
             <div class="products">
                 <c:forEach var="list" items="${productList }">
-                    <a href="/productdetail?id=${list.id}">
-                        <img src=${list.image}>
+                        <c:choose>
+                            <c:when test = "${list.quantity == 0}">
+                                <a href ="/product">
+                                <img src=/SOLDOUT.png>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="/productdetail?id=${list.id}">
+                                <img src=${list.image}>
+                            </c:otherwise>
+                        </c:choose>
                         <p>${list.name}</p>
                         <div class="price">
                             <p>${list.price}원</p>
