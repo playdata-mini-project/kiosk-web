@@ -14,7 +14,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setStatus(HttpServletResponse.SC_OK);
-        req.getRequestDispatcher("views/admin.html").forward(req, res);
+        req.getRequestDispatcher("views/admin.jsp").forward(req, res);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class AddProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setStatus(200);
-        request.getRequestDispatcher("views/addProduct.html").forward(request, response);
+        request.getRequestDispatcher("views/addProduct.jsp").forward(request, response);
     }
 
     @Override

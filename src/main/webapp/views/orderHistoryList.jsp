@@ -15,7 +15,7 @@
 <body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="/css/orderhistory.css">
-
+<c:import url="/views/header.jsp"/>
 <table>
     <thead><h1>주문 내역</h1></thead>
     <tbody>

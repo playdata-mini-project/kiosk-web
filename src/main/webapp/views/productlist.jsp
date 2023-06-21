@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="/css/addproduct.css">
 
-
+<c:import url="/views/header.jsp"/>
 <table>
 <c:forEach var="product" items = "${productlist}">
     <form action="/addProductUpdate" method="post" accept-charset="UTF-8">

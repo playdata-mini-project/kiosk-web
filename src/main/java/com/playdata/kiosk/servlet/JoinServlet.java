@@ -27,6 +27,6 @@ public class JoinServlet extends HttpServlet {
         JoinDto joinDto = new JoinDto(name, password, mail);
         new UserDao().join(joinDto);
 
-        resp.sendRedirect("/main");
+        resp.sendRedirect("/login");
     }
 }

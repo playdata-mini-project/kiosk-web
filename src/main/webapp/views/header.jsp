@@ -15,6 +15,9 @@
           <li><a href="#">
             <h2>사용자 :${name}님</h2></a>
           </li>
+          <li><a href="/logout">
+            <h2>로그아웃</h2></a>
+          </li>
         </c:when>
         <c:otherwise>
           <li><a href="/views/login.html">
