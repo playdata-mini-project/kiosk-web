@@ -37,6 +37,17 @@ public class Orders {
     }
 
     public void bePrepared(){
-        completion = Completion.INCOMPLETE;
+        completion = Completion.COMPLETE;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "productName='" + productName + '\'' +
+                ", makeTime=" + makeTime +
+                ", amount=" + amount +
+                ", userName='" + userName + '\'' +
+                ", completion=" + completion +
+                '}';
     }
 }

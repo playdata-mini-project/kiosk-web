@@ -96,7 +96,7 @@ public class ProductDao {
 
     public ProductDetailDto productDetail(Long id) {
         Connection conn = new  JdbcConnection().getJdbc();
-        String sql = "select id,name,price,img_url,quantity from product " +
+        String sql = "select id,name,price,img_url,quantity,make_time from product " +
                 "where id = ?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -112,7 +112,8 @@ public class ProductDao {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getInt(6)
                 );
             }
             return product;
