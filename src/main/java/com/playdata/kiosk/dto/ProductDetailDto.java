@@ -6,6 +6,11 @@ public class ProductDetailDto {
     private int price;
     private String image;
     private int quantity;
+    private int makeTime;
+
+    public int getMakeTime() {
+        return makeTime;
+    }
 
     public Long getId() {
         return id;
@@ -31,11 +36,12 @@ public class ProductDetailDto {
     public ProductDetailDto() {
     }
 
-    public ProductDetailDto(Long id, String name, int price, String image, int quantity) {
+    public ProductDetailDto(Long id, String name, int price, String image, int quantity,int makeTime) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.image = image;
         this.quantity = quantity;
+        this.makeTime = makeTime;
     }
 }

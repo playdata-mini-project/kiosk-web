@@ -9,26 +9,27 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderBoardService {
-
-    private static Long todayOrderNumber = 0L;
-    private static final Map<Long, Orders> todayOrder = new HashMap<>();
-    private final CoffeeMachine coffeeMachine = new CoffeeMachine();
+    public static final Map<Long, Orders> todayOrder = new HashMap<>();
     private final ProductDao productDao = new ProductDao();
 
     public void 알바야커피만들어라(Long productId, int amount, String userName){
         ProductDetailDto productDetailDto = productDao.productDetail(productId);
 
-        Orders orders = makeCoffee(
+        CoffeeMachine coffeeMachine = new CoffeeMachine(
                 productDetailDto.getName(),
-                productDetailDto.getQuantity(),
+                productDetailDto.getMakeTime(),
                 amount,
                 userName);
 
-        todayOrder.put(++todayOrderNumber, orders);
+        coffeeMachine.start();
     }
-    public List[] 알바야주문번호확인해라(){
+    public List<Orders>[] 알바야주문번호확인해라(){
         List<Orders> completes = new ArrayList<>();
         List<Orders> incompletes = new ArrayList<>();
+
+        List<Orders>[] lists = new List[2];
+        lists[0] = completes;
+        lists[1] = incompletes;
 
         for (Long todayOrderNumber : todayOrder.keySet()) {
             Orders order = todayOrder.get(todayOrderNumber);
@@ -40,15 +41,6 @@ public class OrderBoardService {
             }
         }
         //0 완성... 1 미완성...
-        return new List[]{completes, incompletes};
-    }
-    private Orders makeCoffee(String productName, int makeTime, int amount, String userName){
-
-        Orders orders = coffeeMachine.make(
-                productName,
-                makeTime,
-                amount,
-                userName);
-        return orders;
+        return lists;
     }
 }

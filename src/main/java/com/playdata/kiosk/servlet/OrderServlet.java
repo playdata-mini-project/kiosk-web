@@ -2,6 +2,7 @@ package com.playdata.kiosk.servlet;
 
 import com.playdata.kiosk.dao.OrderDao;
 import com.playdata.kiosk.dto.ProductCartDto;
+import com.playdata.kiosk.utility.kitchen.OrderBoardService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,7 @@ public class OrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         OrderDao orderDao = new OrderDao();
+        OrderBoardService orderBoardService = new OrderBoardService();
 
         HttpSession session = req.getSession();
         List<ProductCartDto> cartList = (List<ProductCartDto>) session.getAttribute("cartList");
@@ -30,11 +32,13 @@ public class OrderServlet extends HttpServlet {
         for(int i = 0; i<cartList.size(); i++ ) {
             Long productId = cartList.get(i).getId();
             int quantity = cartList.get(i).getQuantity();
+            String userName = (String) session.getAttribute("name");
             orderDao.order(productId,quantity);
             orderDao.orderDetailSave(orderHistoryId,productId,quantity);
+            orderBoardService.알바야커피만들어라(productId,quantity,userName);
         }
         session.removeAttribute("cartList");
-        resp.sendRedirect("/product");
+        resp.sendRedirect("/orderboard");
 
     }
 }
