@@ -22,9 +22,9 @@ public class JoinServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        String email = req.getParameter("email");
+        String mail = req.getParameter("mail");
 
-        JoinDto joinDto = new JoinDto(name, password, email);
+        JoinDto joinDto = new JoinDto(name, password, mail);
         new UserDao().join(joinDto);
 
         resp.sendRedirect("/main");
