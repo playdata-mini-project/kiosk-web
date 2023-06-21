@@ -1,6 +1,6 @@
 package com.playdata.kiosk.utility.kitchen;
 
-public class Order {
+public class OrderList {
 
     //상품객체로 바꿀 예정
     private String product;
@@ -8,7 +8,7 @@ public class Order {
     private String user;
     private boolean isPrepared = false;
 
-    public Order(String product, String user) {
+    public OrderList(String product, String user) {
         this.product = product;
         this.user = user;
     }

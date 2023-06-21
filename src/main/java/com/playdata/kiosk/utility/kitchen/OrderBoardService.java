@@ -1,6 +1,6 @@
 package com.playdata.kiosk.utility.kitchen;
 
-public class Barista {
+public class OrderBoardService {
 
     public void 알바야커피만들어라(){
         //대충 주문정보(유저, 상품, 주문수량...)받아옴
