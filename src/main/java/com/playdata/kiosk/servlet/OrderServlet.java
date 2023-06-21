@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/order")
@@ -21,7 +22,9 @@ public class OrderServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         List<ProductCartDto> cartList = (List<ProductCartDto>) session.getAttribute("cartList");
-
+        if(cartList == null) {
+            cartList = new ArrayList<>();
+        }
         Long userId = 1L;
         int orderHistoryId = orderDao.orderSave(userId);
         for(int i = 0; i<cartList.size(); i++ ) {
