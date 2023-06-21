@@ -1,17 +1,27 @@
 package com.playdata.kiosk.utility.kitchen;
 
+import com.playdata.kiosk.dto.ProductDetailDto;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class CoffeeMachine extends Thread{
 
-    private final int SECOND = 1000;
+    private static final int SECOND = 1000;
+    private static Queue<Orders> queue = new LinkedList<>();
 
-    //커피를 뱉을 거임
-    public void make(String product){
-        OrderBoard.addOrder(product);
+    public Orders make(String productName, int makeTime, int amount, String userName){
+
+        Orders orders = new Orders(productName, makeTime, amount, userName);
+
         try {
-            Thread.sleep(SECOND); //product.getMakeTime(); 이랑 곱할거임
-            //order.bePrepared();
+            queue.offer(orders);
+            Thread.sleep(makeTime * amount * SECOND);
+            orders.bePrepared();
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return orders;
     }
 }
