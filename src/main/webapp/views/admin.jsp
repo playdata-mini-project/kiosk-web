@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Title</title>
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 <c:import url="/views/header.jsp"/>
