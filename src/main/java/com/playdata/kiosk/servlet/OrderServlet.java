@@ -25,7 +25,7 @@ public class OrderServlet extends HttpServlet {
         if(cartList == null) {
             cartList = new ArrayList<>();
         }
-        Long userId = 1L;
+        Long userId = (Long) session.getAttribute("id");
         int orderHistoryId = orderDao.orderSave(userId);
         for(int i = 0; i<cartList.size(); i++ ) {
             Long productId = cartList.get(i).getId();
