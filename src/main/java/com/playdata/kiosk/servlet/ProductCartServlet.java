@@ -31,6 +31,7 @@ public class ProductCartServlet extends HttpServlet {
         Long productId = Long.valueOf(req.getParameter("id"));
         String productName = req.getParameter("name");
         int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String image = req.getParameter("image");
         int price = Integer.parseInt(req.getParameter("price"));
         int priceTotal = price * quantity;
 
@@ -52,7 +53,7 @@ public class ProductCartServlet extends HttpServlet {
             }
         }
 
-        cartList.add(new ProductCartDto(productId,productName,quantity,price,priceTotal));
+        cartList.add(new ProductCartDto(productId,productName,quantity,price,priceTotal,image));
 
         if(status == "duplicate") {
             cartList.remove(cartList.size()-1);

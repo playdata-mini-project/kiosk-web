@@ -19,6 +19,7 @@
         <input type = "hidden" name="id" value="<%=productDetail.getId()%>">
         <input type = "hidden" name="name" value="<%=productDetail.getName()%>">
         <input type = "hidden" name="price" value="<%=productDetail.getPrice()%>">
+        <input type = "hidden" name="image" value="<%=productDetail.getImage()%>">
         <select name = "quantity">
             <c:forEach begin="1" end="<%=productDetail.getQuantity()%>" var="i">
                 <option value = "${i}">${i}</option>
