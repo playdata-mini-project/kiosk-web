@@ -7,7 +7,7 @@ public class Orders {
     private int makeTime;
     private int amount;
     private String userName;
-    private boolean isPrepared = false;
+    private Completion completion = Completion.INCOMPLETE;
 
     public Orders(String productName, int makeTime, int amount, String userName) {
         this.productName = productName;
@@ -17,6 +17,6 @@ public class Orders {
     }
 
     public void bePrepared(){
-        isPrepared = true;
+        completion = Completion.INCOMPLETE;
     }
 }
