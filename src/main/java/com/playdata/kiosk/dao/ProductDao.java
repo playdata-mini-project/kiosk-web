@@ -4,6 +4,7 @@ import com.playdata.kiosk.dto.ProductDetailDto;
 import com.playdata.kiosk.dto.ProductDto;
 import com.playdata.kiosk.config.JdbcConnection;
 import com.playdata.kiosk.dto.ProductListDto;
+import com.playdata.kiosk.servlet.ProductUpdateServlet;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,7 +119,20 @@ public class ProductDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+    }
+    public void updateProductQuantity(ProductDto productDto) {
+        Connection conn = new  JdbcConnection().getJdbc();
+        String sql = "update product " +
+                        "set quantity = ? " +
+                        "where id = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, productDto.getQuantity() + productDto.getAddQuantity());
+            pst.setInt(2, productDto.getId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
