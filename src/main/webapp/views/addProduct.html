@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 추가</title>
+    <style>
+        body {background: url("https://cdn.imweb.me/thumbnail/20210812/ad9682aa4cc60.jpg")
+                left top no-repeat fixed;
+              background-size: cover;
+              margin-left:500px;
+              margin-right:500px;
+        }
+    </style>
+</head>
+<body>
+<h1>상품추가</h1>
+<div>
+  <form action="/addproduct" method="post" accept-charset="UTF-8">
+    <input type="text" name="name" placeholder="상품명을 입력하세요"><br><br>
+    <input type="text" name="categoryId" placeholder="카테고리를 입력하세요"><br><br>
+    <input type="text" name="quantity" placeholder="수량을 입력하세요"><br><br>
+    <input type="text" name="price" placeholder="가격을 입력하세요"><br><br>
+    <input type="text" name="makeTime" placeholder="제조 시간을 입력하세요"><br><br>
+    <input type="url"  name="imgUrl" placeholder="이미지를 넣어주세요"><br><br>
+      <button>추가</button>
+  </form>
+</div>
+</body>
+</html>
