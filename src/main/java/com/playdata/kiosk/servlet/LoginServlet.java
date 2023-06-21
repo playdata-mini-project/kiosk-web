@@ -38,10 +38,10 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("role", user.getRole());
             session.setAttribute("mail", user.getMail());
 
-            if(user.getRole() == Role.ADMIN){
-                resp.sendRedirect("/order");
-            } else {
+            if(user.getRole() != Role.ADMIN){
                 resp.sendRedirect("/admin");
+            } else {
+                resp.sendRedirect("/order");
             }
         }
 
