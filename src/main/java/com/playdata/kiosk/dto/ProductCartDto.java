@@ -1,5 +1,7 @@
 package com.playdata.kiosk.dto;
 
+import java.util.Objects;
+
 public class ProductCartDto {
     private Long id;
     private String name;
@@ -32,8 +34,8 @@ public class ProductCartDto {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void increaseQuantity(int quantity) {
+        this.quantity += quantity;
     }
 
     public ProductCartDto(Long id, String name, int quantity, int price, int priceTotal, String image) {
@@ -43,5 +45,30 @@ public class ProductCartDto {
         this.price = price;
         this.priceTotal = priceTotal;
         this.image = image;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductCartDto that = (ProductCartDto) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductCartDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", priceTotal=" + priceTotal +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

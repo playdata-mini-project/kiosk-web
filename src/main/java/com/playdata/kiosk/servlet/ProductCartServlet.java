@@ -1,6 +1,7 @@
 package com.playdata.kiosk.servlet;
 
 import com.playdata.kiosk.dto.ProductCartDto;
+import com.playdata.kiosk.dto.ProductCartListDto;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/productcart")
 public class ProductCartServlet extends HttpServlet {
@@ -18,9 +17,9 @@ public class ProductCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         HttpSession session = req.getSession();
-        List<ProductCartDto> cartList = (List<ProductCartDto>) session.getAttribute("cartList");
+
+        ProductCartListDto cartList = (ProductCartListDto) session.getAttribute("cartList");
         req.setAttribute("cartList",cartList);
-        System.out.println(cartList);
         req.getRequestDispatcher("views/productcart.jsp").forward(req, resp);
     }
 
@@ -36,31 +35,17 @@ public class ProductCartServlet extends HttpServlet {
         int priceTotal = price * quantity;
 
         HttpSession session = req.getSession();
-        List<ProductCartDto> cartList = (List<ProductCartDto>) session.getAttribute("cartList");
-        if(cartList == null) {
-            cartList = new ArrayList<>();
+        ProductCartListDto cartListDto = (ProductCartListDto) session.getAttribute("cartList");
+
+        if (cartListDto == null) {
+            cartListDto = new ProductCartListDto();
         }
 
-        String status = null;
+        cartListDto.addCartList(new ProductCartDto(
+                productId, productName, quantity, price, priceTotal, image)
+        );
 
-        for(int i = 0; i<cartList.size(); i++ ) {
-            Long cartId = cartList.get(i).getId();
-            if(cartId == productId && cartId != null) {
-                cartList.get(i).setQuantity(
-                        cartList.get(i).getQuantity() + quantity
-                );
-                status = "duplicate";
-            }
-        }
-
-        cartList.add(new ProductCartDto(productId,productName,quantity,price,priceTotal,image));
-
-        if(status == "duplicate") {
-            cartList.remove(cartList.size()-1);
-        }
-
-        session.setAttribute("cartList",cartList);
-        System.out.println(cartList);
+        session.setAttribute("cartList",cartListDto);
         resp.sendRedirect("/product");
     }
 }
