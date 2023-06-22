@@ -46,3 +46,5 @@ https://github.com/HeeHeeg
 - entity,domain 분리
 - 공통로직 추출 
 
+## 시연
+https://velog.io/@qmffndoden/Day21.-Mini-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-2.Cafe-Kiosk
